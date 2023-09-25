@@ -1,0 +1,6 @@
+-Εκανα include τη jquery απο cdn
+-Τροποποιησα/προσθεσα καποια id στα html για να κανω τα ajax calls.
+-Χρησιμοποιησα την preventeDefault() γιατι τα submit forms δεν αφηναν να γινουν τα ajax calls.
+-Το auth.php μες το folder ajax διεκπερωνει τα ajax calls.
+-Το db.php μες το inc συνδεεται με τη βαση. 
+-Το users.sql μες το inc περιεχει τη δομη της βασης.
