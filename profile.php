@@ -97,25 +97,25 @@
                   <div class="row mb-3">
                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">First name</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="First name">
+                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="First name" value="<?php echo $_SESSION['user']['firstname'] ?>">
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Last name</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Last name">
+                      <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Last name" value="<?php echo $_SESSION['user']['lastname'] ?>">
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
-                      <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email">
+                      <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email" value="<?php echo $_SESSION['user']['email'] ?>">
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
                     <div class="col-sm-9">
-                      <input type="number" class="form-control" id="exampleInputMobile" placeholder="Mobile number">
+                      <input type="number" class="form-control" id="exampleInputMobile" placeholder="Mobile number" value="<?php echo $_SESSION['user']['mobile'] ?>">
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -219,6 +219,10 @@
       .done(function( response, textStatus, jqXHR ) {
         if(response.error === false) {
           alert( "Data Updated" );
+          window.location.reload();
+        }
+        else{
+          alert( response.desc );
         }
       })
       .fail(function( jqXHR, textStatus, errorThrown ) {

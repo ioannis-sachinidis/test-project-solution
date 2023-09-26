@@ -1,3 +1,21 @@
+<?php
+  include $_SERVER['DOCUMENT_ROOT'] . "/inc/db.php";
+  @session_start();
+  if(isset($_SESSION['user'])) {
+    header("Location: /profile.php");
+  }
+  if(isset($_COOKIE['token'])){ 
+    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `token`= ? ");
+    $stmt->bindParam(1, $_COOKIE['token'], PDO::PARAM_STR);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION['user'] = $result;
+    header("Location: /profile.php");
+  }
+
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -108,7 +126,8 @@
       const postdata = {
         action      : 'login',
         userEmail   : $("#userEmail").val(),
-        userPassword: $("#userPassword").val()
+        userPassword: $("#userPassword").val(),
+        rememberMe  : $("#authCheck").prop("checked")
       }
 
       $.ajax({
